@@ -36,9 +36,39 @@ public class MainActivity extends Activity {
         editTextFileName=(EditText)findViewById(R.id.editText1);  
         editTextData=(EditText)findViewById(R.id.editText2);  
         saveButton=(Button)findViewById(R.id.button1);  
-        readButton=(Button)findViewById(R.id.button2);  
+        readButton=(Button)findViewById(R.id.button2);   
+    saveButton.setOnClickListener(new OnClickListener(){  
+    	  
         
-    }  
+        public void onClick(View arg0) {  
+            String filename=editTextFileName.getText().toString();  
+            String data=editTextData.getText().toString();  
+              
+            FileOutputStream fos;  
+               try {  
+                   File myFile = new File("/sdcard/"+filename);  
+                    myFile.createNewFile();  
+                    FileOutputStream fOut = new   
+
+FileOutputStream(myFile);  
+                    OutputStreamWriter myOutWriter = new   
+
+OutputStreamWriter(fOut);  
+                    myOutWriter.append(data);  
+                    myOutWriter.close();  
+                    fOut.close();  
+                 
+        Toast.makeText(getApplicationContext(),filename + "saved",Toast.LENGTH_LONG).show();  
+                  
+                 
+               } catch (FileNotFoundException e) {e.printStackTrace();}  
+               catch (IOException e) {e.printStackTrace();}  
+              
+        }  
+          
+    }); 
+    }
+}
   
    /* @Override  
     public boolean onCreateOptionsMenu(Menu menu) {  
@@ -47,7 +77,7 @@ public class MainActivity extends Activity {
         return true;  
     }*/  
   
-}  
+
 
    /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
