@@ -67,8 +67,41 @@ OutputStreamWriter(fOut);
         }  
           
     }); 
+    
+
+readButton.setOnClickListener(new OnClickListener(){  
+	  
+    
+    public void onClick(View arg0) {  
+        String filename=editTextFileName.getText().toString();  
+        StringBuffer stringBuffer = new StringBuffer();    
+        String aDataRow = "";  
+        String aBuffer = "";  
+        try {  
+            File myFile = new File("/sdcard/"+filename);  
+            FileInputStream fIn = new FileInputStream(myFile);  
+            BufferedReader myReader = new BufferedReader(  
+                    new InputStreamReader(fIn));  
+              
+            while ((aDataRow = myReader.readLine()) != null) {  
+                aBuffer += aDataRow + "\n";  
+            }  
+            myReader.close();  
+              
+        } catch (IOException e) {  
+            e.printStackTrace();  
+        }  
+        Toast.makeText(getApplicationContext  
+
+(),aBuffer,Toast.LENGTH_LONG).show();  
+          
+    }  
+      
+}); 
     }
 }
+
+
   
    /* @Override  
     public boolean onCreateOptionsMenu(Menu menu) {  
