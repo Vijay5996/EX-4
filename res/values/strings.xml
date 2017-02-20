@@ -4,5 +4,7 @@
     <string name="app_name">read&amp;write</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="read_file">Read_File</string>
+    <string name="savebutton">savebutton</string>
 
 </resources>
